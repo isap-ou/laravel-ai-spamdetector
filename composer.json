@@ -1,0 +1,49 @@
+{
+  "name": "isapp/laravel-ai-spamdetector",
+  "description": "Seamlessly integrate AI-powered spam protection into your Laravel forms. This lightweight package leverages OpenAI GPT to intelligently filter out spam and bot submissions—no captchas, no friction.",
+  "type": "library",
+  "require": {
+    "isapp/ai-spamdetector": "^1.0"
+  },
+  "require-dev": {
+    "laravel/pint": "*",
+    "phpunit/phpunit": "^11.5",
+    "orchestra/testbench": "^10.3"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Isapp\\LaravelAiSpamdetector\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "ISAP OÜ",
+      "email": "contact@isap.me",
+      "homepage": "https://isap.me"
+    },
+    {
+      "name": "Andrii Trush",
+      "email": "andrii.trush@isapp.be",
+      "homepage": "https://isapp.be"
+    }
+  ],
+  "support": {
+    "email": "contact@isap.me"
+  },
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Isapp\\LaravelAiSpamdetector\\ServiceProvider"
+      ],
+      "aliases": {
+        "Spamdetector": "Isapp\\LaravelAiSpamdetector\\Facades\\Spamdetector"
+      }
+    }
+  }
+}
