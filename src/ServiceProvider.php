@@ -9,17 +9,9 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/courier.php',
-            'ai-spamdetecto'
+            __DIR__ . '/../config/config.php',
+            'ai-spamdetector'
         );
-    }
-
-    public function boot(): void
-    {
-        $this->publishes([
-            __DIR__.'/../config/config.php' => config_path('ai-spamdetector.php'),
-        ], 'ai-spamdetector-config');
-
         $this->app->bind(SpamDetector::class, function ($app) {
             $config = $app['config']['ai-spamdetector'];
 
@@ -33,5 +25,16 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
                 )
             );
         });
+
+        $this->app->singleton('ai-spamdetector', SpamDetector::class);
+    }
+
+    public function boot(): void
+    {
+        $this->publishes([
+            __DIR__ . '/../config/config.php' => config_path('ai-spamdetector.php'),
+        ], 'ai-spamdetector-config');
+
+
     }
 }
